@@ -1,4 +1,4 @@
-name: Push APK from repoA
+name: Push APK
 
 on:
   repository_dispatch:
