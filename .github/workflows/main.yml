@@ -15,6 +15,14 @@ jobs:
           name: ConnectionApp.apk
           path: ./
 
+      - name: Verify artifact download
+        if: steps.check_artifact.outputs.result == 'failure'
+        run: echo "Artifact does not exist, skipping further steps"
+
+      - name: List downloaded files
+        if: steps.check_artifact.outputs.result == 'success'
+        run: ls path/to/local/directory
+
       - name: Configure Git
         run: |
           git config --global user.email "actions@github.com"
